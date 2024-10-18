@@ -7,7 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\SerilogExtended\SerilogExtended.csproj" />
+    <ProjectReference Include="..\SerilogExtended\Utils.DotNectCore.Serilog.Extended.csproj" />
   </ItemGroup>
 
 </Project>
