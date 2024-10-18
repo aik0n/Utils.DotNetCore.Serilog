@@ -1,0 +1,61 @@
+{
+  "Serilog": {
+    "MinimumLevel": {
+      "Default": "Verbose"
+    },
+    "Using": [ "Serilog.Sinks.PersistentFile", "Serilog.Expressions" ],
+    "WriteTo": [
+      {
+        "Name": "Logger",
+        "Args": {
+          "configureLogger": {
+            "WriteTo": [
+              {
+                "Name": "PersistentFile",
+                "Args": {
+                  "path": "logs/all-events.log",
+                  "outputTemplate": "{Timestamp:yyyy-MM-dd HH:mm:ss.fff zzz} [{Level:u3}] {Message:lj}{NewLine}{Exception}",
+                  "persistentFileRollingInterval": "Day",
+                  "rollOnFileSizeLimit": false,
+                  "preserveLogFilename": true,
+                  "shared": true
+                }
+              }
+            ]
+          }
+        }
+      },
+      {
+        "Name": "Logger",
+        "Args": {
+          "configureLogger": {
+            "Filter": [
+              {
+                "Name": "ByIncludingOnly",
+                "Args": {
+                  "expression": "@l = 'Warning' or @l = 'Error' or @l = 'Fatal'"
+                }
+              }
+            ],
+            "WriteTo": [
+              {
+                "Name": "PersistentFile",
+                "Args": {
+                  "path": "logs/warning-and-above-events.log",
+                  "outputTemplate": "{Timestamp:yyyy-MM-dd HH:mm:ss.fff zzz} [{Level:u3}] {Message:lj}{NewLine}{Exception}",
+                  "persistentFileRollingInterval": "Day",
+                  "rollOnFileSizeLimit": false,
+                  "preserveLogFilename": true,
+                  "shared": true
+                }
+              }
+            ]
+          }
+        }
+      }
+    ],
+    "Properties": {
+      "Application": "Your_App_Name"
+    }
+  }
+}
