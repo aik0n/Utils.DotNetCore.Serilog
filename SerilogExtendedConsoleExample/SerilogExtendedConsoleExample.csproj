@@ -12,7 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\SerilogExtended\Utils.DotNectCore.Serilog.Extended.csproj" />
+    <ProjectReference Include="..\SerilogExtended\Utils.DotNetCore.Serilog.Extended.csproj" />
   </ItemGroup>
 
   <ItemGroup>
