@@ -21,7 +21,7 @@ Samples shown below.
 
 **Also, a source code contains two samples of integration WEB and Console.**
 
-Add to your project NuGet package ``` dotnet add package SerilogExtended --version 1.0.0 ```
+Add to your project with NuGet package manager or console command
 
 ### WEB application
 First of all before read a serilog settings file in your implementation - add a self debug.
