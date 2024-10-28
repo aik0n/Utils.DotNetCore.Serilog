@@ -7,16 +7,17 @@
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <Title>Utils.DotNectCore.Serilog.Extended</Title>
     <Authors>a_i_k_0_n</Authors>
-    <Description>Serilog Extension to help use it in projects. A couple additional extension methods added, sample configuration, self debug, persistence log file name, etc.</Description>
+    <Description>Serilog Extension to help use it in projects. A couple additional extension methods added, sample configuration, self debug, log file name, etc.</Description>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <RepositoryUrl>https://github.com/aik0n/Utils.DotNetCore.Serilog.Extended</RepositoryUrl>
     <PackageTags>Serilog;Integration;WEB;Console</PackageTags>
-    <PackageReleaseNotes>Initial release</PackageReleaseNotes>
+    <PackageReleaseNotes>Persistence file removed, Serilog Debug method updated</PackageReleaseNotes>
     <NeutralLanguage>en-US</NeutralLanguage>
     <PackageLicenseFile>LICENSE.md</PackageLicenseFile>
     <IncludeSymbols>True</IncludeSymbols>
     <PackageIcon>robo_avatar_aik0n_02_128_128.png</PackageIcon>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+    <Version>1.0.2</Version>
   </PropertyGroup>
 
   <ItemGroup>
