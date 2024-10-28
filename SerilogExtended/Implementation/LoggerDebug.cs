@@ -11,8 +11,15 @@
         /// <param name="path">A path to diagnostics log file</param>
         public static void Enable(string path)
         {
-            var file = File.CreateText(path);
-            Serilog.Debugging.SelfLog.Enable(TextWriter.Synchronized(file));
+            var info = new FileInfo(path);
+            if (false == info.Directory.Exists)
+            {
+                info.Directory.Create();
+            }
+
+            var fileStream = new FileStream(path, FileMode.Append, FileAccess.Write, FileShare.ReadWrite);
+            var streamWriter = new StreamWriter(fileStream) { AutoFlush = true };
+            Serilog.Debugging.SelfLog.Enable(TextWriter.Synchronized(streamWriter));
         }
     }
 }
