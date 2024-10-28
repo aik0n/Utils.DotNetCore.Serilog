@@ -3,7 +3,7 @@
     "MinimumLevel": {
       "Default": "Verbose"
     },
-    "Using": [ "Serilog.Sinks.Console", "Serilog.Sinks.PersistentFile", "Serilog.Expressions" ],
+    "Using": [ "Serilog.Sinks.Console", "Serilog.Sinks.File", "Serilog.Expressions" ],
     "WriteTo": [
       {
         "Name": "Logger",
@@ -34,13 +34,12 @@
             ],
             "WriteTo": [
               {
-                "Name": "PersistentFile",
+                "Name": "File",
                 "Args": {
                   "path": "logs/warning-and-above-events.log",
                   "outputTemplate": "{Timestamp:yyyy-MM-dd HH:mm:ss.fff zzz} [{Level:u3}] {Message:lj}{NewLine}{Exception}",
-                  "persistentFileRollingInterval": "Day",
+                  "rollingInterval": "Day",
                   "rollOnFileSizeLimit": false,
-                  "preserveLogFilename": true,
                   "shared": true
                 }
               }

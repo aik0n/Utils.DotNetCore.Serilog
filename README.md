@@ -4,13 +4,12 @@ A simple library to make Serilog integration to .NET projects a bit easier.
 Supports (out of a box):
 
 1. Standard set of sinks - Console, File, Seq, MS SQL
-2. One unusual PersistenceFile sink
-3. A few common enrichers - FromLogContext, WithMachineName, Environment
-4. Expressions - to add ability filter logs or create different files with different logs, etc.
-5. ASP .NET Core logging middleware
-6. Extension methods to log with context
-7. Integration with .NET Core dependency injection
-8. Logger setup using configuration (settings file)
+2. A few common enrichers - FromLogContext, WithMachineName, Environment
+3. Expressions - to add ability filter logs or create different files with different logs, etc.
+4. ASP .NET Core logging middleware
+5. Extension methods to log with context
+6. Integration with .NET Core dependency injection
+7. Logger setup using configuration (settings file)
 
 
 ## How to use
@@ -201,7 +200,7 @@ Configuration samples provided with app samples in source code. A minimal one is
     "MinimumLevel": {
       "Default": "Verbose"
     },
-    "Using": [ "Serilog.Sinks.PersistentFile", "Serilog.Expressions" ],
+    "Using": [ "Serilog.Sinks.File", "Serilog.Expressions" ],
     "WriteTo": [
       {
         "Name": "Logger",
@@ -213,9 +212,8 @@ Configuration samples provided with app samples in source code. A minimal one is
                 "Args": {
                   "path": "logs/all-events.log",
                   "outputTemplate": "{Timestamp:yyyy-MM-dd HH:mm:ss.fff zzz} [{Level:u3}] {Message:lj}{NewLine}{Exception}",
-                  "persistentFileRollingInterval": "Day",
+                  "rollingInterval": "Day",
                   "rollOnFileSizeLimit": false,
-                  "preserveLogFilename": true,
                   "shared": true
                 }
               }
@@ -230,11 +228,6 @@ Configuration samples provided with app samples in source code. A minimal one is
   }
 }
 ```
-
-## Persistent File
-This implementation uses a custom [Persistent File sink](https://github.com/dfacto-lab/serilog-sinks-file).
-
-A goal is to keep latest log records in a file and keep it name. Can be helpful when other tools based on a file name. Basic serilog configuration settings for persistence file shown above.
 
 ## Log with class and method names
 Exists not only one way to achieve this. And, in the same time every approach has it own props and cons. From a performance issues to complexity of using, namespaces and extension tricks.
